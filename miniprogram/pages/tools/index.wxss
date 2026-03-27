@@ -1,0 +1,28 @@
+.page {
+}
+
+.grid {
+  margin-top: 20rpx;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18rpx;
+}
+
+.item {
+  min-height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.itemTitle {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.itemSub {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #6b7280;
+}
+

@@ -1,0 +1,5 @@
+<view wx:if="{{!online}}" class="bar">
+  <text class="text">当前处于离线状态，部分数据可能不是最新</text>
+  <view wx:if="{{queueSize>0}}" class="pill">{{queueSize}}条已暂存</view>
+</view>
+

@@ -1,0 +1,21 @@
+.page {
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18rpx;
+}
+
+.rowTitle {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.link {
+  font-size: 26rpx;
+  color: #2a7de1;
+  padding: 8rpx 10rpx;
+}
+

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "胎动计数",
+  "usingComponents": {
+    "offline-bar": "/components/OfflineBar/index"
+  }
+}
+

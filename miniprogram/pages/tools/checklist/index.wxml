@@ -1,0 +1,30 @@
+<offline-bar online="{{online}}" queueSize="{{offlineQueueSize}}" />
+
+<view class="page">
+  <view class="title">待产清单</view>
+
+  <state-view wx:if="{{state!=='normal'}}" state="{{state}}" emptyText="清单为空" emptyActionText="恢复默认模板" bind:action="onReset" />
+
+  <view wx:else>
+    <view class="card">
+      <view class="subtle" style="margin-bottom: 12rpx;">进度：{{checkedCount}} / {{items.length}}</view>
+      <view wx:for="{{items}}" wx:key="id" class="row" data-id="{{item.id}}" bindtap="onToggle">
+        <view class="left">
+          <view class="rowTitle">{{item.title}}</view>
+          <view wx:if="{{item.note}}" class="subtle">{{item.note}}</view>
+        </view>
+        <view class="mark {{item.checked?'on':''}}">{{item.checked?'已备':'未备'}}</view>
+      </view>
+    </view>
+
+    <view class="card" style="margin-top: 16rpx;">
+      <view class="subtle" style="margin-bottom: 10rpx;">新增自定义项</view>
+      <view class="btnRow">
+        <view class="btnPrimary" bindtap="onAdd">新增</view>
+        <view class="btnGhost" bindtap="onReset">恢复默认</view>
+      </view>
+      <view wx:if="{{!online}}" class="hint">离线操作会先暂存，联网后自动同步</view>
+    </view>
+  </view>
+</view>
+

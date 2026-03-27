@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "宫缩计时",
+  "usingComponents": {
+    "offline-bar": "/components/OfflineBar/index"
+  }
+}
+

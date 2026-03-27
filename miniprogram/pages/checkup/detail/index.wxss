@@ -1,0 +1,32 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18rpx;
+}
+
+.rowTitle {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.link {
+  font-size: 26rpx;
+  color: #2a7de1;
+  padding: 8rpx 10rpx;
+}
+
+.imgs {
+  margin-top: 12rpx;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10rpx;
+}
+
+.img {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 16rpx;
+  background: #f1f5f9;
+}
+

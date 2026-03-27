@@ -1,0 +1,46 @@
+.field {
+  margin-top: 18rpx;
+}
+
+.label {
+  font-size: 26rpx;
+  color: #475569;
+  margin-bottom: 10rpx;
+}
+
+.picker {
+  padding: 18rpx 16rpx;
+  border-radius: 16rpx;
+  background: #f8fafc;
+  border: 1rpx solid #eef2f7;
+  font-size: 28rpx;
+}
+
+.input {
+  padding: 18rpx 16rpx;
+  border-radius: 16rpx;
+  background: #f8fafc;
+  border: 1rpx solid #eef2f7;
+  font-size: 28rpx;
+}
+
+.textarea {
+  padding: 18rpx 16rpx;
+  border-radius: 16rpx;
+  background: #f8fafc;
+  border: 1rpx solid #eef2f7;
+  font-size: 28rpx;
+  min-height: 140rpx;
+  box-sizing: border-box;
+}
+
+.btnPrimary {
+  margin-top: 24rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 16rpx;
+  background: #2a7de1;
+  color: #ffffff;
+  font-size: 28rpx;
+  text-align: center;
+}
+

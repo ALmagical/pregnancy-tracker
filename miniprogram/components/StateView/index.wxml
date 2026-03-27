@@ -1,0 +1,24 @@
+<view class="wrap">
+  <view wx:if="{{state==='loading'}}" class="card">
+    <view class="title">{{loadingText||'正在加载...'}}</view>
+    <view class="subtle">请稍候</view>
+  </view>
+
+  <view wx:elif="{{state==='empty'}}" class="card">
+    <view class="title">{{emptyText||'这里还没有内容'}}</view>
+    <view wx:if="{{emptyActionText}}" class="btn" bindtap="onAction">{{emptyActionText}}</view>
+  </view>
+
+  <view wx:elif="{{state==='error'}}" class="card">
+    <view class="title">{{errorText||'加载失败了'}}</view>
+    <view class="subtle">{{errorSubText||'请检查网络后重试'}}</view>
+    <view class="btn" bindtap="onAction">{{errorActionText||'重新加载'}}</view>
+  </view>
+
+  <view wx:elif="{{state==='offline'}}" class="card">
+    <view class="title">{{offlineText||'当前离线'}}</view>
+    <view class="subtle">{{offlineSubText||'部分数据可能不是最新'}}</view>
+    <view wx:if="{{offlineActionText}}" class="btn" bindtap="onAction">{{offlineActionText}}</view>
+  </view>
+</view>
+

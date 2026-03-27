@@ -1,0 +1,43 @@
+<offline-bar online="{{online}}" queueSize="{{offlineQueueSize}}" />
+
+<view class="page">
+  <state-view wx:if="{{state!=='normal'}}" state="{{state}}" bind:action="reload" />
+
+  <view wx:else>
+    <view class="title">{{checkupTypeText}}</view>
+    <view class="subtle">{{checkupMetaText}}</view>
+
+    <view class="card" style="margin-top: 16rpx;">
+      <view class="row">
+        <view class="rowTitle">报告图片</view>
+        <view class="link" bindtap="onUpload">上传</view>
+      </view>
+      <view wx:if="{{!hasImages}}" class="subtle" style="margin-top: 10rpx;">还没有上传报告</view>
+      <view class="imgs" wx:else>
+        <image wx:for="{{images}}" wx:key="id" class="img" mode="aspectFill" src="{{item.thumb}}" data-idx="{{index}}" bindtap="onPreview" />
+      </view>
+      <view wx:if="{{uploading}}" class="subtle" style="margin-top: 10rpx;">上传中…</view>
+    </view>
+
+    <view class="card" style="margin-top: 16rpx;">
+      <view class="rowTitle">摘要</view>
+      <view class="subtle" style="margin-top: 10rpx;">{{summaryText}}</view>
+    </view>
+
+    <view class="card" style="margin-top: 16rpx;">
+      <view class="rowTitle">备注</view>
+      <view class="subtle" style="margin-top: 10rpx;">{{noteText}}</view>
+    </view>
+
+    <view class="card" style="margin-top: 16rpx;">
+      <view class="row">
+        <view>
+          <view class="rowTitle">AI 解读</view>
+          <view class="subtle">入口已就绪（后续里程碑接入）</view>
+        </view>
+        <view class="link" bindtap="onAiInterpret">查看</view>
+      </view>
+    </view>
+  </view>
+</view>
+

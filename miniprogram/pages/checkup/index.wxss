@@ -1,0 +1,56 @@
+.page {
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18rpx;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f1f5f9;
+}
+
+.rowTitle {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.tag {
+  margin-top: 8rpx;
+  display: inline-flex;
+  padding: 6rpx 12rpx;
+  border-radius: 999rpx;
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+  font-size: 22rpx;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  align-items: flex-end;
+}
+
+.link {
+  font-size: 26rpx;
+  color: #2a7de1;
+  padding: 6rpx 10rpx;
+}
+
+.danger {
+  font-size: 26rpx;
+  color: #ef4444;
+  padding: 6rpx 10rpx;
+}
+
+.btnPrimary {
+  margin-top: 18rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 16rpx;
+  background: #2a7de1;
+  color: #ffffff;
+  font-size: 28rpx;
+  text-align: center;
+}
+

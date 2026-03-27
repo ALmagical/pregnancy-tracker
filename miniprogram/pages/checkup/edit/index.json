@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "编辑产检",
+  "usingComponents": {
+    "offline-bar": "/components/OfflineBar/index"
+  }
+}
+

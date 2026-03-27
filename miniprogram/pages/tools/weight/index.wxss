@@ -1,0 +1,41 @@
+.big {
+  margin-top: 6rpx;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.hint {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #9a3412;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #f1f5f9;
+}
+
+.rowTitle {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.del {
+  color: #ef4444;
+  font-size: 26rpx;
+  padding: 8rpx 10rpx;
+}
+
+.btnPrimary {
+  margin-top: 18rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 16rpx;
+  background: #2a7de1;
+  color: #ffffff;
+  font-size: 28rpx;
+  text-align: center;
+}
+

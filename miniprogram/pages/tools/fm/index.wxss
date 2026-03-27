@@ -1,0 +1,56 @@
+.counter {
+  margin-top: 10rpx;
+  font-size: 56rpx;
+  font-weight: 800;
+}
+
+.rowBtns {
+  margin-top: 18rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+}
+
+.btnGhost {
+  padding: 16rpx 20rpx;
+  border-radius: 16rpx;
+  background: rgba(42, 125, 225, 0.1);
+  color: #2a7de1;
+  font-size: 28rpx;
+}
+
+.btnPrimary {
+  padding: 16rpx 20rpx;
+  border-radius: 16rpx;
+  background: #2a7de1;
+  color: #ffffff;
+  font-size: 28rpx;
+}
+
+.btnDanger {
+  padding: 16rpx 20rpx;
+  border-radius: 16rpx;
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  font-size: 28rpx;
+}
+
+.hint {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #9a3412;
+}
+
+.histRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #f1f5f9;
+}
+
+.histTitle {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+

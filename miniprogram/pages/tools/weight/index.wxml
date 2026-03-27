@@ -1,0 +1,28 @@
+<offline-bar online="{{online}}" queueSize="{{offlineQueueSize}}" />
+
+<view class="page">
+  <view class="title">体重记录</view>
+
+  <state-view wx:if="{{state!=='normal'}}" state="{{state}}" emptyText="还没有体重记录" emptyActionText="新增记录" bind:action="onAdd" />
+
+  <view wx:else>
+    <view class="card" style="margin-bottom: 16rpx;">
+      <view class="subtle">当前体重</view>
+      <view class="big">{{stats.currentWeight}} kg</view>
+      <view wx:if="{{!online}}" class="hint">离线记录会先暂存，联网后自动同步</view>
+    </view>
+
+    <view class="card">
+      <view class="subtle" style="margin-bottom: 10rpx;">最近记录</view>
+      <view wx:for="{{list}}" wx:key="id" class="row">
+        <view>
+          <view class="rowTitle">{{item.weight}} kg</view>
+          <view class="subtle">{{item.recordedAt}}</view>
+        </view>
+        <view class="del" data-id="{{item.id}}" bindtap="onDelete">删除</view>
+      </view>
+      <view class="btnPrimary" bindtap="onAdd">新增记录</view>
+    </view>
+  </view>
+</view>
+

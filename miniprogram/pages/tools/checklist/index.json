@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "待产清单",
+  "usingComponents": {
+    "offline-bar": "/components/OfflineBar/index",
+    "state-view": "/components/StateView/index"
+  }
+}
+

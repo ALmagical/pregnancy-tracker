@@ -1,0 +1,42 @@
+.page {
+}
+
+.big {
+  margin-top: 8rpx;
+  font-size: 44rpx;
+  font-weight: 800;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18rpx;
+}
+
+.rowTitle {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.link {
+  font-size: 26rpx;
+  color: #2a7de1;
+  padding: 8rpx 10rpx;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14rpx;
+}
+
+.tool {
+  padding: 18rpx 18rpx;
+  border-radius: 16rpx;
+  background: #f8fafc;
+  border: 1rpx solid #eef2f7;
+  font-size: 28rpx;
+  text-align: center;
+}
+

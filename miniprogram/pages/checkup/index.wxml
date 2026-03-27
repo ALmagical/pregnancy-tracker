@@ -1,0 +1,24 @@
+<offline-bar online="{{online}}" queueSize="{{offlineQueueSize}}" />
+
+<view class="page">
+  <view class="title">产检管理</view>
+
+  <state-view wx:if="{{state!=='normal'}}" state="{{state}}" emptyText="还没有产检记录" emptyActionText="添加产检记录" bind:action="onAdd" />
+
+  <view wx:else class="card">
+    <view class="subtle" style="margin-bottom: 10rpx;">产检列表</view>
+    <view wx:for="{{list}}" wx:key="id" class="row" data-id="{{item.id}}" bindtap="onOpenDetail">
+      <view>
+        <view class="rowTitle">{{item.checkupType||'产检'}}</view>
+        <view class="subtle">{{item.checkupDate}} · {{item.hospital||'未填写医院'}}</view>
+        <view wx:if="{{item.hasReport}}" class="tag">已上传报告（{{item.reportCount}}）</view>
+      </view>
+      <view class="actions" catchtap="noop">
+        <view class="link" data-id="{{item.id}}" bindtap="onEdit">编辑</view>
+        <view class="danger" data-id="{{item.id}}" bindtap="onDelete">删除</view>
+      </view>
+    </view>
+    <view class="btnPrimary" bindtap="onAdd">新增产检</view>
+  </view>
+</view>
+

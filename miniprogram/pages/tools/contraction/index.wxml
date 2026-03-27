@@ -1,0 +1,28 @@
+<offline-bar online="{{online}}" queueSize="{{offlineQueueSize}}" />
+
+<view class="page">
+  <view class="title">宫缩计时</view>
+  <view class="card">
+    <view class="subtle">状态</view>
+    <view class="status">{{running?'计时中':'未开始'}}</view>
+    <view class="timer">{{elapsedText}}</view>
+    <view class="rowBtns">
+      <view class="btnPrimary" bindtap="onStart" wx:if="{{!running}}">开始</view>
+      <view class="btnDanger" bindtap="onStop" wx:if="{{running}}">结束并保存</view>
+    </view>
+    <view wx:if="{{!online}}" class="hint">离线保存会先暂存，联网后自动同步</view>
+  </view>
+
+  <view class="card" style="margin-top: 16rpx;">
+    <view class="subtle" style="margin-bottom: 10rpx;">历史记录</view>
+    <view wx:if="{{list.length===0}}" class="subtle">暂无记录</view>
+    <view wx:for="{{list}}" wx:key="id" class="histRow">
+      <view>
+        <view class="histTitle">{{item.durationSec}}s</view>
+        <view class="subtle">{{item.startedAt}}</view>
+      </view>
+      <view class="subtle">{{item.endedAt}}</view>
+    </view>
+  </view>
+</view>
+
