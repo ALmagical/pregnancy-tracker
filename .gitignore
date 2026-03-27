@@ -1,0 +1,24 @@
+# OS
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# WeChat DevTools (common)
+project.private.config.json
+*.private.config.json
+
+# Build / export artifacts (adjust as needed)
+dist/
+export/
+*.zip
+
+# Local env (if introduced later)
+.env
+.env.*
+
