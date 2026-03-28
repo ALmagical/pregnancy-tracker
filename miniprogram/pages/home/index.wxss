@@ -1,10 +1,49 @@
 .page {
 }
 
+.hero {
+  margin-bottom: 16rpx;
+  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 60%);
+}
+
+.heroLabel {
+  font-size: 24rpx;
+  color: #6366f1;
+  font-weight: 600;
+}
+
+.heroTitle {
+  margin-top: 6rpx;
+  font-size: 42rpx;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.heroSubtle {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #64748b;
+}
+
+.weekCard {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
 .big {
   margin-top: 8rpx;
   font-size: 44rpx;
   font-weight: 800;
+  color: #111827;
+}
+
+.highlightTag {
+  margin-top: 10rpx;
+  display: inline-block;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 999rpx;
+  padding: 8rpx 16rpx;
+  font-size: 24rpx;
 }
 
 .row {
@@ -25,6 +64,12 @@
   padding: 8rpx 10rpx;
 }
 
+.linkPill {
+  border-radius: 999rpx;
+  background: #eff6ff;
+  padding: 10rpx 20rpx;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -36,7 +81,26 @@
   border-radius: 16rpx;
   background: #f8fafc;
   border: 1rpx solid #eef2f7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.toolIcon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.toolName {
+  margin-top: 10rpx;
   font-size: 28rpx;
-  text-align: center;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.toolDesc {
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #64748b;
 }
 

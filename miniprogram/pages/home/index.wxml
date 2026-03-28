@@ -1,15 +1,19 @@
 <offline-bar online="{{online}}" queueSize="{{offlineQueueSize}}" />
 
 <view class="page">
-  <view class="title">Today</view>
+  <view class="hero card">
+    <view class="heroLabel">Today</view>
+    <view class="heroTitle">孕育时光</view>
+    <view class="heroSubtle">陪你记录每一天的变化</view>
+  </view>
 
   <state-view wx:if="{{state!=='normal'}}" state="{{state}}" emptyText="还没有设置孕期信息" emptyActionText="开始设置孕期信息" bind:action="goProfile" />
 
   <view wx:else>
-    <view class="card">
+    <view class="card weekCard">
       <view class="subtle">当前孕周</view>
       <view class="big">第 {{userInfo.currentWeek}} 周 + {{userInfo.currentDay}} 天</view>
-      <view class="subtle" style="margin-top: 8rpx;">距离预产期还有 {{daysToDue}} 天</view>
+      <view class="highlightTag">距离预产期还有 {{daysToDue}} 天</view>
     </view>
 
     <view class="card" style="margin-top: 16rpx;">
@@ -18,17 +22,18 @@
           <view class="rowTitle">下次产检</view>
           <view class="subtle">{{nextCheckupText}}</view>
         </view>
-        <view class="link" bindtap="goCheckup">查看</view>
+        <view class="link linkPill" bindtap="goCheckup">查看</view>
       </view>
     </view>
 
     <view class="card" style="margin-top: 16rpx;">
       <view class="rowTitle" style="margin-bottom: 10rpx;">快捷工具</view>
       <view class="grid">
-        <view class="tool" data-tool="weight" bindtap="onQuickTool">体重</view>
-        <view class="tool" data-tool="fm" bindtap="onQuickTool">胎动</view>
-        <view class="tool" data-tool="contraction" bindtap="onQuickTool">宫缩</view>
-        <view class="tool" data-tool="checklist" bindtap="onQuickTool">待产清单</view>
+        <view class="tool" wx:for="{{quickTools}}" wx:key="key" data-tool="{{item.key}}" bindtap="onQuickTool">
+          <image class="toolIcon" src="{{item.icon}}" mode="aspectFit" />
+          <view class="toolName">{{item.name}}</view>
+          <view class="toolDesc">{{item.desc}}</view>
+        </view>
       </view>
     </view>
   </view>

@@ -1,34 +1,17 @@
 <offline-bar online="{{online}}" queueSize="{{offlineQueueSize}}" />
 
 <view class="page">
-  <view class="title">工具</view>
-  <view class="subtle">体重、胎动、宫缩、待产清单</view>
+  <view class="hero card">
+    <view class="heroTitle">常用工具</view>
+    <view class="heroSubtle">快速进入记录与计时功能</view>
+  </view>
 
   <view class="grid">
-    <view class="item card" bindtap="goWeight">
-      <view class="itemTitle">体重</view>
-      <view class="itemSub">记录与趋势</view>
+    <view class="item card" wx:for="{{tools}}" wx:key="key" data-action="{{item.action}}" bindtap="onToolTap">
+      <image class="itemIcon" src="{{item.icon}}" mode="aspectFit" />
+      <view class="itemTitle">{{item.title}}</view>
+      <view class="itemSub">{{item.sub}}</view>
     </view>
-    <view class="item card" bindtap="goFm">
-      <view class="itemTitle">胎动</view>
-      <view class="itemSub">开始计数</view>
-    </view>
-    <view class="item card" bindtap="goContraction">
-      <view class="itemTitle">宫缩</view>
-      <view class="itemSub">计时与记录</view>
-    </view>
-    <view class="item card" bindtap="goChecklist">
-      <view class="itemTitle">待产清单</view>
-      <view class="itemSub">模板+自定义</view>
-    </view>
-  </view>
-</view>
-
-<view class="page">
-  <view class="title">工具</view>
-  <view class="card">
-    <view>这里将实现体重、胎动、宫缩、待产清单等工具入口。</view>
-    <view class="subtle" style="margin-top: 12rpx;">当前为工程空壳。</view>
   </view>
 </view>
 

@@ -1,4 +1,5 @@
 export const STORAGE_KEYS = {
+  authToken: "pt.authToken.v1",
   userInfo: "pt.userInfo.v1",
   checkups: "pt.checkups.v1",
   weights: "pt.weights.v1",

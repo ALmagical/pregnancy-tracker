@@ -11,7 +11,33 @@ Page({
     state: "loading",
     userInfo: null,
     daysToDue: "-",
-    nextCheckupText: "暂无"
+    nextCheckupText: "暂无",
+    quickTools: [
+      {
+        key: "weight",
+        name: "体重",
+        desc: "记录趋势",
+        icon: "/assets/icons/weight.svg"
+      },
+      {
+        key: "fm",
+        name: "胎动",
+        desc: "开始计数",
+        icon: "/assets/icons/baby.svg"
+      },
+      {
+        key: "contraction",
+        name: "宫缩",
+        desc: "计时记录",
+        icon: "/assets/icons/timer.svg"
+      },
+      {
+        key: "checklist",
+        name: "待产清单",
+        desc: "按项准备",
+        icon: "/assets/icons/clipboard.svg"
+      }
+    ]
   },
   async onShow() {
     const app = getApp();

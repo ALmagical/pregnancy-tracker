@@ -1,3 +1,4 @@
+import { useRemoteApi } from "../config";
 import { STORAGE_KEYS } from "../utils/constants";
 import { Storage } from "../utils/storage";
 import { formatDateYYYYMMDD, addDays, nowIso } from "../utils/date";
@@ -12,6 +13,15 @@ function ensure(key, initialValue) {
 }
 
 export function initMockDbIfNeeded() {
+  if (useRemoteApi()) {
+    ensure(STORAGE_KEYS.fmSessions, []);
+    ensure(STORAGE_KEYS.fmActiveSession, null);
+    ensure(STORAGE_KEYS.contractions, []);
+    ensure(STORAGE_KEYS.offlineQueue, []);
+    ensure(STORAGE_KEYS.settings, { ai: { contextEnabled: true } });
+    return;
+  }
+
   const today = new Date();
   const lastPeriodDate = formatDateYYYYMMDD(addDays(today, -24 * 7 - 3)); // 大约24周+3天
   const userInfo = ensure(STORAGE_KEYS.userInfo, {

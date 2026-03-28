@@ -1,3 +1,5 @@
+import { API_BASE_URL, useRemoteApi } from "./config";
+import { ensureWechatSession } from "./services/authService";
 import { initMockDbIfNeeded } from "./services/mockDb";
 import { initNetworkListener } from "./utils/net";
 import { getOfflineQueueSize } from "./services/offlineSync";
@@ -7,9 +9,16 @@ App({
   globalData: {
     env: "dev",
     online: true,
-    offlineQueueSize: 0
+    offlineQueueSize: 0,
+    apiBase: "",
+    useRemoteApi: false
   },
-  onLaunch() {
+  async onLaunch() {
+    this.globalData.apiBase = API_BASE_URL;
+    this.globalData.useRemoteApi = useRemoteApi();
+    if (useRemoteApi()) {
+      await ensureWechatSession();
+    }
     initMockDbIfNeeded();
 
     initNetworkListener(async (online) => {

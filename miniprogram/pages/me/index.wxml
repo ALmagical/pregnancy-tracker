@@ -1,27 +1,31 @@
 <offline-bar online="{{online}}" queueSize="{{offlineQueueSize}}" />
 
 <view class="page">
-  <view class="title">我的</view>
+  <view class="hero card">
+    <view class="heroTitle">我的</view>
+    <view class="heroSubtle">管理你的孕期信息与隐私设置</view>
+  </view>
 
   <state-view wx:if="{{state!=='normal'}}" state="{{state}}" emptyText="还没有设置孕期信息" emptyActionText="去设置" bind:action="goProfile" />
 
   <view wx:else>
-    <view class="card">
+    <view class="card infoCard">
       <view class="row">
         <view>
           <view class="rowTitle">孕期信息</view>
           <view class="subtle">状态：{{userInfo.status}} · 第{{userInfo.currentWeek}}周+{{userInfo.currentDay}}天</view>
         </view>
-        <view class="link" bindtap="goProfile">编辑</view>
+        <view class="link linkPill" bindtap="goProfile">编辑</view>
       </view>
       <view class="subtle" style="margin-top: 8rpx;">末次月经：{{userInfo.lastPeriodDate}} · 预产期：{{userInfo.dueDate}}</view>
     </view>
 
     <view class="card" style="margin-top: 16rpx;">
       <view class="row">
-        <view>
+        <view class="rowMain">
+          <image class="rowIcon" src="/assets/icons/neurology.svg" mode="aspectFit" />
           <view class="rowTitle">AI 上下文注入</view>
-          <view class="subtle">关闭后 AI 不读取你的孕周/记录信息</view>
+          <view class="subtle">关闭后 AI 不读取你的孕周和记录信息</view>
         </view>
         <switch checked="{{aiContextEnabled}}" bindchange="onAiContextToggle" />
       </view>
@@ -29,11 +33,12 @@
 
     <view class="card" style="margin-top: 16rpx;">
       <view class="row">
-        <view>
+        <view class="rowMain">
+          <image class="rowIcon" src="/assets/icons/download.svg" mode="aspectFit" />
           <view class="rowTitle">数据导出</view>
           <view class="subtle">后续里程碑实现</view>
         </view>
-        <view class="link" bindtap="onExport">查看</view>
+        <view class="link linkPill" bindtap="onExport">查看</view>
       </view>
     </view>
   </view>

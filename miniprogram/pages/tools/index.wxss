@@ -1,23 +1,46 @@
 .page {
 }
 
+.hero {
+  margin-bottom: 20rpx;
+  background: linear-gradient(135deg, #ecfeff 0%, #ffffff 70%);
+}
+
+.heroTitle {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.heroSubtle {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #64748b;
+}
+
 .grid {
-  margin-top: 20rpx;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18rpx;
 }
 
 .item {
-  min-height: 140rpx;
+  min-height: 180rpx;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.itemIcon {
+  width: 44rpx;
+  height: 44rpx;
 }
 
 .itemTitle {
+  margin-top: 14rpx;
   font-size: 30rpx;
   font-weight: 600;
+  color: #0f172a;
 }
 
 .itemSub {

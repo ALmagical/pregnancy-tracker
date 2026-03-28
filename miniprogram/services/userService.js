@@ -1,4 +1,6 @@
+import { useRemoteApi } from "../config";
 import { ok, fail } from "../utils/errors";
+import { apiGet, apiPut } from "../utils/apiClient";
 import { getUserInfo, setUserInfo } from "../utils/storage";
 import { validateLastPeriodDate } from "../utils/validation";
 import { addDays, diffDays, formatDateYYYYMMDD, nowIso, parseYYYYMMDD } from "../utils/date";
@@ -15,6 +17,11 @@ function computePregnancyFromLastPeriod(lastPeriodDate) {
 }
 
 export async function getUserInfoApi() {
+  if (useRemoteApi()) {
+    const r = await apiGet("/api/v1/user/info");
+    if (r.code === 0 && r.data) setUserInfo(r.data);
+    return r;
+  }
   const userInfo = getUserInfo();
   if (!userInfo) return fail("未设置孕期信息", "E_NOT_FOUND", {});
   return ok(userInfo);
@@ -24,6 +31,16 @@ export async function updateUserInfoApi(payload) {
   if (payload?.lastPeriodDate) {
     const v = validateLastPeriodDate(payload.lastPeriodDate);
     if (!v.ok) return fail(v.message, v.errorCode, {});
+  }
+
+  if (useRemoteApi()) {
+    const r = await apiPut("/api/v1/user/info", payload);
+    if (r.code === 0 && r.data) {
+      const merged = { ...(getUserInfo() || {}), ...payload, ...r.data };
+      merged.updatedAt = nowIso();
+      setUserInfo(merged);
+    }
+    return r;
   }
 
   const current = getUserInfo() || {};

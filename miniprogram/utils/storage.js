@@ -31,6 +31,16 @@ export function setUserInfo(userInfo) {
   set(STORAGE_KEYS.userInfo, userInfo);
 }
 
+export function getAuthToken() {
+  const t = get(STORAGE_KEYS.authToken, "");
+  return t ? String(t) : "";
+}
+
+export function setAuthToken(token) {
+  if (token) set(STORAGE_KEYS.authToken, String(token));
+  else Storage.remove(STORAGE_KEYS.authToken);
+}
+
 export function getSettings() {
   return get(STORAGE_KEYS.settings, { ai: { contextEnabled: true } });
 }

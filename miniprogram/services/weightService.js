@@ -1,4 +1,6 @@
+import { useRemoteApi } from "../config";
 import { ok, fail } from "../utils/errors";
+import { apiDelete, apiGet, apiPost } from "../utils/apiClient";
 import { Storage, enqueueOfflineAction } from "../utils/storage";
 import { STORAGE_KEYS } from "../utils/constants";
 import { nowIso } from "../utils/date";
@@ -17,7 +19,10 @@ function genId() {
   return `w_${Date.now()}`;
 }
 
-export async function listWeightsApi({ page = 1, pageSize = 30 } = {}) {
+export async function listWeightsApi({ page = 1, pageSize = 30, startDate = "", endDate = "" } = {}) {
+  if (useRemoteApi()) {
+    return apiGet("/api/v1/weights", { page, pageSize, startDate, endDate });
+  }
   const all = getAll()
     .slice()
     .sort((a, b) => String(b.recordedAt).localeCompare(String(a.recordedAt)));
@@ -46,6 +51,27 @@ export async function createWeightApi({ weight, week, day, recordedAt } = {}) {
   if (!v.ok && v.errorCode !== "E_WEIGHT_UNREASONABLE") return fail(v.message, v.errorCode, {});
   const rounded = v?.data?.rounded ?? Math.round(Number(weight) * 10) / 10;
 
+  if (useRemoteApi()) {
+    const body = {
+      weight: rounded,
+      recordedAt: recordedAt ? String(recordedAt).slice(0, 10) : nowIso().slice(0, 10),
+      note: ""
+    };
+    if (!isOnline()) {
+      const item = {
+        id: genId(),
+        weight: rounded,
+        recordedAt: body.recordedAt,
+        week: typeof week === "number" ? week : null,
+        day: typeof day === "number" ? day : null,
+        syncStatus: "pending"
+      };
+      enqueueOfflineAction({ type: "weight.create", payload: item });
+      return ok({ id: item.id });
+    }
+    return apiPost("/api/v1/weights", body);
+  }
+
   const item = {
     id: genId(),
     weight: rounded,
@@ -67,6 +93,13 @@ export async function createWeightApi({ weight, week, day, recordedAt } = {}) {
 }
 
 export async function deleteWeightApi(id) {
+  if (useRemoteApi()) {
+    if (!isOnline()) {
+      enqueueOfflineAction({ type: "weight.delete", payload: { id } });
+      return ok({});
+    }
+    return apiDelete(`/api/v1/weights/${encodeURIComponent(id)}`);
+  }
   const all = getAll();
   const next = all.filter((x) => x.id !== id);
   if (next.length === all.length) return fail("记录不存在", "E_NOT_FOUND", {});
@@ -74,4 +107,3 @@ export async function deleteWeightApi(id) {
   if (!isOnline()) enqueueOfflineAction({ type: "weight.delete", payload: { id } });
   return ok({});
 }
-
