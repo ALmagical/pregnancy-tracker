@@ -4,7 +4,9 @@
  *
  * 留空字符串则使用本地存储逻辑（离线演示模式）。
  */
-export const API_BASE_URL = "";
+export const API_BASE_URL = "https://api.alonggxl.top";
+// 生产/线上请配置为你的 API HTTPS 域名（无尾斜杠），例如：https://api.alonggxl.top
+// export const API_BASE_URL = "https://api.alonggxl.top";
 
 /**
  * 微信 wx.login 返回的 code 换取 JWT / session token 的接口路径。
