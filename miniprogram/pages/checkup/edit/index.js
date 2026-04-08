@@ -15,11 +15,12 @@ Page({
   async onLoad(query) {
     const app = getApp();
     this.setData({
-      online: app?.globalData?.online !== false,
-      offlineQueueSize: app?.globalData?.offlineQueueSize || 0,
-      id: query?.id || ""
+      online: !(app && app.globalData && app.globalData.online === false),
+      offlineQueueSize:
+        (app && app.globalData && app.globalData.offlineQueueSize) ? app.globalData.offlineQueueSize : 0,
+      id: (query && query.id) ? query.id : ""
     });
-    if (query?.id) await this.loadDetail(query.id);
+    if (query && query.id) await this.loadDetail(query.id);
   },
   async loadDetail(id) {
     try {

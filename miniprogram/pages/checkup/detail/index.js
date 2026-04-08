@@ -21,9 +21,10 @@ Page({
   async onLoad(query) {
     const app = getApp();
     this.setData({
-      online: app?.globalData?.online !== false,
-      offlineQueueSize: app?.globalData?.offlineQueueSize || 0,
-      id: query?.id || ""
+      online: !(app && app.globalData && app.globalData.online === false),
+      offlineQueueSize:
+        (app && app.globalData && app.globalData.offlineQueueSize) ? app.globalData.offlineQueueSize : 0,
+      id: (query && query.id) ? query.id : ""
     });
     await this.reload();
   },
@@ -60,7 +61,8 @@ Page({
     }
   },
   onPreview(e) {
-    const idx = Number(e.currentTarget?.dataset?.idx) || 0;
+    const idx =
+      Number(e && e.currentTarget && e.currentTarget.dataset && e.currentTarget.dataset.idx) || 0;
     const urls = (this.data.images || []).map((x) => x.url);
     if (!urls.length) return;
     wx.previewImage({ urls, current: urls[idx] });
@@ -82,7 +84,7 @@ Page({
           fail: reject
         });
       });
-      const paths = choose?.tempFilePaths || [];
+      const paths = (choose && choose.tempFilePaths) ? choose.tempFilePaths : [];
       if (!paths.length) return;
       if (paths.length > 9) {
         wx.showToast({ title: "最多选择9张图片", icon: "none" });
@@ -100,7 +102,9 @@ Page({
     }
   },
   onAiInterpret() {
-    track("report_ai_interpret_click", { checkup_type_id: this.data.detail?.checkupTypeId || "manual" });
+    track("report_ai_interpret_click", {
+      checkup_type_id: (this.data.detail && this.data.detail.checkupTypeId) ? this.data.detail.checkupTypeId : "manual"
+    });
     wx.showToast({ title: "AI 解读将在后续版本提供", icon: "none" });
   }
 });

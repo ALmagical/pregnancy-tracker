@@ -29,7 +29,8 @@ App({
         const res = await syncOfflineQueue();
         this.globalData.offlineQueueSize = getOfflineQueueSize();
         const after = this.globalData.offlineQueueSize || 0;
-        const processed = typeof res?.processed === "number" ? res.processed : Math.max(0, before - after);
+        const processed =
+          res && typeof res.processed === "number" ? res.processed : Math.max(0, before - after);
         if (processed > 0) {
           wx.showToast({ title: `已同步${processed}条暂存记录`, icon: "none" });
         }
