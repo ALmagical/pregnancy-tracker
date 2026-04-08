@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"pregnancy-tracker/server/internal/api"
 	"pregnancy-tracker/server/internal/config"
 	"pregnancy-tracker/server/internal/db"
@@ -15,6 +16,9 @@ import (
 )
 
 func main() {
+	_ = godotenv.Load(".env")
+	_ = godotenv.Load("server/.env")
+
 	cfg := config.Load()
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
