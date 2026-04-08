@@ -2,6 +2,8 @@ import { API_BASE_URL } from "../config";
 import { request } from "./request";
 import { fail } from "./errors";
 import { getAuthToken } from "./storage";
+import { ensureWechatSession } from "../services/authService";
+import { useRemoteApi } from "../config";
 
 export function buildApiUrl(path) {
   const base = String(API_BASE_URL || "").replace(/\/+$/, "");
@@ -25,7 +27,12 @@ function mergeQuery(path, query) {
 export async function apiCall(path, { method = "GET", data, header = {}, query } = {}) {
   const url = buildApiUrl(mergeQuery(path, query));
   const h = { "Content-Type": "application/json", ...header };
-  const token = getAuthToken();
+  let token = getAuthToken();
+  if (!token && useRemoteApi()) {
+    // 远程模式下若尚未拿到 token，先尝试静默登录一次
+    const ok = await ensureWechatSession();
+    if (ok) token = getAuthToken();
+  }
   if (token) h.Authorization = `Bearer ${token}`;
   const raw = await request({ url, method, header: h, data: method === "GET" ? undefined : data });
   if (raw && typeof raw.code === "number" && raw.code !== 0) {
